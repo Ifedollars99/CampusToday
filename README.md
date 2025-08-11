@@ -1,29 +1,31 @@
 ## ✅ MyProjectName
-This project is name is called Daily Done.
+The name of this project is SkillSwap Hub.
 
 # Portolio 
-![Weather](./public/images/daily.png)
+![swapskill](./public/images/swapskill.png)
 
 
 # Summary
-A clean, modern task management application built with Vue.js and Tailwind CSS. Features an intuitive interface for organizing daily tasks with priority levels and flexible scheduling options.
+A modern skill exchange platform where users can trade their knowledge and expertise with others in the community.
 
 # ✨ Features
-The task manager includes the following powerful and user-friendly features:
-📝 Task Creation & Management
-Create, edit, and delete tasks with a simple, intuitive interface
-📅 Flexible Scheduling
-Choose from preset options (Today, Tomorrow) or select custom dates for any task
-🎯 Priority System
-Organize tasks with High, Medium, and Low priority levels with visual color coding
-✏️ Edit Functionality
-Modify existing tasks including text, dates, and priority levels seamlessly
-💾 Local Storage
-Automatically saves all tasks locally - your data persists even after page refreshes
+The SkillSwap Hub includes the following powerful and user-friendly features:
+🔍 Smart Search & Filtering
+Real-time category search to quickly find specific skill exchanges
+🎯 Skill Categories
+Browse diverse skill categories including Music, Photography, Technology, Creative Arts, Languages, and more
+👥 User Profiles
+View detailed user profiles with skill levels, feedback, and ratings
+⭐ Rating System
+5-star rating system to build trust within the community
 📱 Fully Responsive Design
 Optimized layout that works perfectly on mobile, tablet, and desktop screens
 🎨 Modern UI/UX
-Clean glassmorphism design with smooth animations and hover effects
+Clean, colorful design with smooth animations and interactive elements
+🤝 Deal Tracking
+Visual indicators for completed skill exchanges and ongoing negotiations
+📋 Skill Levels
+Clear indication of skill proficiency (Beginner, Intermediate, Advanced)
 
 
 ## 🛠️ Technologies Used
@@ -33,7 +35,6 @@ Clean glassmorphism design with smooth animations and hover effects
 | 🎨 Styling      | Tailwind CSS, AOS                     |
 | 🚀 Build Tools  | 	Vite                                 |
 | 🧠 State Mgm    | VueUse                                | 
-| 💾 Data Storage | Local Storage API                     | 
 | 🌍 Deployment   | Vercel                                |
 
 ## 🚀 Installation
@@ -59,4 +60,9 @@ Made by @Ifedollars99
 🔗 [LinkedIn](https://www.linkedin.com/in/taofeeq-ifedolapo-7890162ba?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) 
 | [Twitter](https://x.com/IfedollarsAvr?t=KWrkgQdZLuh7Y7xaCLCWeg&s=09)
 # Ghost of the System 👻
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+Building Connections Through Skills 🤝✨
 
