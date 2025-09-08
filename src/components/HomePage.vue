@@ -206,7 +206,7 @@
           <!-- Overview Tab -->
           <div  v-if="activeTab === 'overview'">
             <!-- Enhanced Stats Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               <div class="bg-white p-6 rounded-lg shadow-sm border">
                 <div class="flex items-center justify-between">
                   <div>
