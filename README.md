@@ -1,40 +1,41 @@
 ## ✅ MyProjectName
-The name of this project is SkillSwap Hub.
+The name of this project is Insight Track.
 
 # Portolio 
-![swapskill](./public/images/swapskill.png)
+![Insight Track](./public/images/insight.png)
 
 
 # Summary
-A modern skill exchange platform where users can trade their knowledge and expertise with others in the community.
+A modern analytics dashboard that empowers businesses to track, filter, and visualize user events, device usage, and key performance metrics in real-time.
 
 # ✨ Features
-The SkillSwap Hub includes the following powerful and user-friendly features:
-🔍 Smart Search & Filtering
-Real-time category search to quickly find specific skill exchanges
-🎯 Skill Categories
-Browse diverse skill categories including Music, Photography, Technology, Creative Arts, Languages, and more
-👥 User Profiles
-View detailed user profiles with skill levels, feedback, and ratings
-⭐ Rating System
-5-star rating system to build trust within the community
-📱 Fully Responsive Design
-Optimized layout that works perfectly on mobile, tablet, and desktop screens
+The InsightTrack Dashboard includes the following powerful and user-friendly features:
+📊 Interactive Charts
+Visualize trends with line, bar, and pie charts for events, revenue, and devices.
+🔍 Advanced Filtering
+Filter analytics by date range, device type, subscription plan, age group, and revenue.
+📈 Dynamic Metrics Overview
+Real-time insights into users, events, and revenue with summary cards.
+🗂 Tabbed Views
+Switch between Overview, Events, and Devices for clear data organization.
+📋 Detailed Tables
+Sortable and scrollable tables to inspect raw event data.
+📑 Export & Sharing
+Export filtered results as JSON or copy directly to clipboard (CSV/PDF coming soon).
+📱 Responsive Design
+Optimized layout for desktop, tablet, and mobile screens.
 🎨 Modern UI/UX
-Clean, colorful design with smooth animations and interactive elements
-🤝 Deal Tracking
-Visual indicators for completed skill exchanges and ongoing negotiations
-📋 Skill Levels
-Clear indication of skill proficiency (Beginner, Intermediate, Advanced)
+Clean, minimal interface with collapsible sidebar, smooth transitions, and intuitive interactions.
 
 
 ## 🛠️ Technologies Used
 | Category        | Technologies                          |
 |-----------------|---------------------------------------|
-| 🖥️ Frontend     | Vue 3, Tailwind CSS, Hero Icons       |
+| 🖥️ Frontend     | Vue 3, Tailwind CSS, Bootstrap Icons  |
+| 📊 Charts       |Chart.js (Line, Bar, Pie visualizations)|
 | 🎨 Styling      | Tailwind CSS, AOS                     |
 | 🚀 Build Tools  | 	Vite                                 |
-| 🧠 State Mgm    | VueUse                                | 
+| 🧠 State Mgm    | VueUse   (reactivity utilities)       | 
 | 🌍 Deployment   | Vercel                                |
 
 ## 🚀 Installation

@@ -1,5 +1,5 @@
 {
-  "name": "skill",
+  "name": "Insighttrack",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
     "autoprefixer": "^10",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "chart.js": "^4.4.6",
+    "chart.js": "^4.5.0",
     "chartkick": "^5.0.1",
     "material-design-icons": "^3.0.1",
     "pinia": "^3.0.3",
