@@ -204,11 +204,11 @@
           </div>
 
           <!-- Overview Tab -->
-          <div data-aos="fade-up" v-if="activeTab === 'overview'">
+          <div  v-if="activeTab === 'overview'">
             <!-- Enhanced Stats Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6 mb-8">
               <div class="bg-white p-6 rounded-lg shadow-sm border">
-                <div data-aos="fade-up" class="flex items-center justify-between">
+                <div class="flex items-center justify-between">
                   <div>
                     <p class="text-sm text-gray-600">Total Users</p>
                     <p class="text-2xl font-bold text-gray-900">{{ totalUsers.toLocaleString() }}</p>
@@ -216,7 +216,7 @@
                   <i class="bi bi-people text-3xl text-blue-500"></i>
                 </div>
               </div>
-              <div data-aos="fade-up" class="bg-white p-6 rounded-lg shadow-sm border">
+              <div class="bg-white p-6 rounded-lg shadow-sm border">
                 <div class="flex items-center justify-between">
                   <div>
                     <p class="text-sm text-gray-600">Total Events</p>
@@ -225,7 +225,7 @@
                   <i class="bi bi-activity text-3xl text-green-500"></i>
                 </div>
               </div>
-              <div data-aos="fade-up" class="bg-white p-6 rounded-lg shadow-sm border">
+              <div class="bg-white p-6 rounded-lg shadow-sm border">
                 <div class="flex items-center justify-between">
                   <div>
                     <p class="text-sm text-gray-600">Signups</p>
@@ -234,7 +234,7 @@
                   <i class="bi bi-person-plus text-3xl text-purple-500"></i>
                 </div>
               </div>
-              <div data-aos="fade-up" class="bg-white p-6 rounded-lg shadow-sm border">
+              <div class="bg-white p-6 rounded-lg shadow-sm border">
                 <div class="flex items-center justify-between">
                   <div>
                     <p class="text-sm text-gray-600">Purchases</p>
@@ -243,7 +243,7 @@
                   <i class="bi bi-cart text-3xl text-orange-500"></i>
                 </div>
               </div>
-              <div data-aos="fade-up" class="bg-white p-6 rounded-lg shadow-sm border">
+              <div class="bg-white p-6 rounded-lg shadow-sm border">
                 <div class="flex items-center justify-between">
                   <div>
                     <p class="text-sm text-gray-600">Total Revenue</p>
@@ -252,7 +252,7 @@
                   <i class="bi bi-currency-dollar text-3xl text-emerald-500"></i>
                 </div>
               </div>
-              <div data-aos="fade-up" class="bg-white p-6 rounded-lg shadow-sm border">
+              <div class="bg-white p-6 rounded-lg shadow-sm border">
                 <div class="flex items-center justify-between">
                   <div>
                     <p class="text-sm text-gray-600">Avg Order Value</p>
@@ -264,9 +264,9 @@
             </div>
 
             <!-- Additional Analytics Row -->
-            <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div class="bg-white p-6 rounded-lg shadow-sm border">
-                <div data-aos="fade-up" class="flex items-center justify-between">
+                <div class="flex items-center justify-between">
                   <div>
                     <p class="text-sm text-gray-600">Conversion Rate</p>
                     <p class="text-3xl font-bold text-gray-900">{{ conversionRate.toFixed(1) }}%</p>
@@ -275,7 +275,7 @@
                   <i class="bi bi-arrow-up-right text-3xl text-green-500"></i>
                 </div>
               </div>
-              <div data-aos="fade-up" class="bg-white p-6 rounded-lg shadow-sm border">
+              <div class="bg-white p-6 rounded-lg shadow-sm border">
                 <div class="flex items-center justify-between">
                   <div>
                     <p class="text-sm text-gray-600">Top Location</p>
