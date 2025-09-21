@@ -1,31 +1,15 @@
 ## ✅ MyProjectName
-The name of this project is Insight Track.
+ 
 
 # Portolio 
-![Insight Track](./public/images/insight.png)
+![Campus Today](./public/images/.png)
 
 
 # Summary
-A modern analytics dashboard that empowers businesses to track, filter, and visualize user events, device usage, and key performance metrics in real-time.
+A 
 
 # ✨ Features
-The InsightTrack Dashboard includes the following powerful and user-friendly features:
-📊 Interactive Charts
-Visualize trends with line, bar, and pie charts for events, revenue, and devices.
-🔍 Advanced Filtering
-Filter analytics by date range, device type, subscription plan, age group, and revenue.
-📈 Dynamic Metrics Overview
-Real-time insights into users, events, and revenue with summary cards.
-🗂 Tabbed Views
-Switch between Overview, Events, and Devices for clear data organization.
-📋 Detailed Tables
-Sortable and scrollable tables to inspect raw event data.
-📑 Export & Sharing
-Export filtered results as JSON or copy directly to clipboard (CSV/PDF coming soon).
-📱 Responsive Design
-Optimized layout for desktop, tablet, and mobile screens.
-🎨 Modern UI/UX
-Clean, minimal interface with collapsible sidebar, smooth transitions, and intuitive interactions.
+ 
 
 
 ## 🛠️ Technologies Used
