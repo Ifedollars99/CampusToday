@@ -24,9 +24,11 @@
         </h1>
 
         <div class="flex flex-row gap-3">
+            <router-link to="/signup" >
             <button
                 class="bg-black py-2 md:py-3 px-3 md:px-6 rounded-3xl text-white font-normal hover:scale-110 hover:bg-pink-500 text-xl md:text-3xl shadow-md">Get
                 started</button>
+                </router-link>
             <button
                 class="bg-white py-2 md:py-3 px-3 md:px-6 rounded-3xl text-black font-bold hover:scale-90 hover:text-pink-500 text-xl md:text-3xl shadow-md ">Learn
                 More.....</button>
