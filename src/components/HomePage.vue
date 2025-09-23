@@ -56,7 +56,9 @@
 
         <!-- User Menu -->
         <div class="hidden lg:block bg-black hover:bg-pink-600 hover:scale-110 p-5 rounded-3xl">
-          <h1 class="text-white font-bold">Get started</h1>
+          <router-link to="/signup">
+            <h1 class="text-white font-bold">Get started</h1>
+          </router-link>
         </div>
 
         <!-- Mobile menu button -->
@@ -117,16 +119,18 @@
 
         <!-- User Menu -->
         <div class=" bg-black hover:bg-pink-600 hover:scale-90 p-5 rounded-3xl">
-          <h1 class="text-white font-bold">Get started</h1>
+          <router-link to="/signup">
+            <h1 class="text-white font-bold">Get started</h1>
+          </router-link>
         </div>
       </div>
     </div>
 
   </nav>
 
- <!-- main content  -->
-    <MainContent />
-    <!-- end of main content  -->
+  <!-- main content  -->
+  <MainContent />
+  <!-- end of main content  -->
 </template>
 
 <script setup>

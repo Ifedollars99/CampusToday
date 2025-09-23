@@ -24,14 +24,17 @@
         </h1>
 
         <div class="flex flex-row gap-3">
-            <router-link to="/signup" >
-            <button
-                class="bg-black py-2 md:py-3 px-3 md:px-6 rounded-3xl text-white font-normal hover:scale-110 hover:bg-pink-500 text-xl md:text-3xl shadow-md">Get
-                started</button>
-                </router-link>
-            <button
-                class="bg-white py-2 md:py-3 px-3 md:px-6 rounded-3xl text-black font-bold hover:scale-90 hover:text-pink-500 text-xl md:text-3xl shadow-md ">Learn
-                More.....</button>
+            <router-link to="/signup">
+                <button
+                    class="bg-black py-2 md:py-3 px-3 md:px-6 rounded-3xl text-white font-normal hover:scale-110 hover:bg-pink-500 text-xl md:text-3xl shadow-md">Get
+                    started</button>
+            </router-link>
+
+            <router-link to="/signup">
+                <button
+                    class="bg-white py-2 md:py-3 px-3 md:px-6 rounded-3xl text-black font-bold hover:scale-90 hover:text-pink-500 text-xl md:text-3xl shadow-md ">Learn
+                    More.....</button>
+            </router-link>
         </div>
 
         <h1 id="campus"
@@ -162,10 +165,12 @@
         </div>
     </div>
     <!-- footer  -->
-    <div class="bg-gray-900 w-full h-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 md:mt-20 gap-5">
+    <div
+        class="bg-gray-900 w-full h-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 md:mt-20 gap-5">
         <div>
             <h1 class="text-white hover:text-blue-500 font-bold text-sm md:text-xl">Contact US (OOU) @</h1>
-            <h1 class="text-white hover:text-blue-500 font-normal text-xs md:text-lg mt-10">location_on : Road 9, Olabisi
+            <h1 class="text-white hover:text-blue-500 font-normal text-xs md:text-lg mt-10">location_on : Road 9,
+                Olabisi
                 Onabanjo
                 University Main Campus,Ago-Iwoye,Ogun State,Nigeria.</h1>
             <h1 class="text-white hover:text-blue-500 font-normal text-xs md:text-lg mt-3">email :
@@ -223,9 +228,10 @@
             </div>
         </div>
 
-          <div>
-            <h1 class="text-white hover:text-blue-500 font-bold text-sm md:text-xl">Copyright © 2025. All Rights Reserved, Made by Ifedollars.</h1>
-      
+        <div>
+            <h1 class="text-white hover:text-blue-500 font-bold text-sm md:text-xl">Copyright © 2025. All Rights
+                Reserved, Made by Ifedollars.</h1>
+
         </div>
     </div>
 </template>

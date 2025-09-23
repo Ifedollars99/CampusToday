@@ -17,34 +17,50 @@
                 <div class="text-center space-y-2">
                     <div
                         class="w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
+                        <i class="bi bi-mortarboard-fill text-white text-2xl"></i>
                     </div>
                     <h1 class="text-3xl font-bold text-white">Create Account</h1>
-                    <p class="text-gray-300">Join us today and get started</p>
+                    <p class="text-gray-300">Join Campus Today and get started</p>
                 </div>
 
                 <!-- Form -->
                 <form @submit.prevent="signUp" class="space-y-6">
 
-                    <!-- Username Input -->
+                    <!-- Category Selection -->
                     <div class="space-y-2">
-                        <label for="username" class="block text-sm font-medium text-gray-200">
-                            Username
+                        <label for="category" class="block text-sm font-medium text-gray-200">
+                            Category *
                         </label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
+                                <i class="bi bi-person-badge text-gray-400"></i>
+                            </div>
+                            <select id="category" v-model="category" required
+                                class="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200 appearance-none"
+                                :class="{ 'border-red-400 ring-1 ring-red-400': categoryError }">
+                                <option value="" disabled class="bg-gray-800 text-gray-300">Select your category</option>
+                                <option value="student" class="bg-gray-800 text-white">Student</option>
+                                <option value="staff" class="bg-gray-800 text-white">Staff/Lecturer</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <i class="bi bi-chevron-down text-gray-400"></i>
+                            </div>
+                        </div>
+                        <p v-if="categoryError" class="text-red-400 text-sm">{{ categoryError }}</p>
+                    </div>
+
+                    <!-- Username Input -->
+                    <div class="space-y-2">
+                        <label for="username" class="block text-sm font-medium text-gray-200">
+                            Username *
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="bi bi-person text-gray-400"></i>
                             </div>
                             <input id="username" v-model="username" type="text" required
                                 class="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200"
-                                placeholder="Choose a username"
+                                placeholder="Create a username"
                                 :class="{ 'border-red-400 ring-1 ring-red-400': usernameError }" />
                         </div>
                         <p v-if="usernameError" class="text-red-400 text-sm">{{ usernameError }}</p>
@@ -53,15 +69,11 @@
                     <!-- Email Input -->
                     <div class="space-y-2">
                         <label for="email" class="block text-sm font-medium text-gray-200">
-                            Email Address
+                            Email Address *
                         </label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-                                </svg>
+                                <i class="bi bi-envelope text-gray-400"></i>
                             </div>
                             <input id="email" v-model="email" type="email" required
                                 class="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200"
@@ -74,15 +86,11 @@
                     <!-- Password Input -->
                     <div class="space-y-2">
                         <label for="password" class="block text-sm font-medium text-gray-200">
-                            Password
+                            Password *
                         </label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                </svg>
+                                <i class="bi bi-lock text-gray-400"></i>
                             </div>
                             <input id="password" v-model="password" :type="showPassword ? 'text' : 'password'" required
                                 class="w-full pl-10 pr-12 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-200"
@@ -90,17 +98,7 @@
                                 :class="{ 'border-red-400 ring-1 ring-red-400': passwordError }" />
                             <button type="button" @click="showPassword = !showPassword"
                                 class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white transition-colors">
-                                <svg v-if="!showPassword" class="h-5 w-5" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                </svg>
-                                <svg v-else class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L8.464 8.464m1.414 1.414L8.464 8.464m5.656 5.656l1.415 1.415m-1.415-1.415l1.415 1.415" />
-                                </svg>
+                                <i :class="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
                             </button>
                         </div>
                         <p v-if="passwordError" class="text-red-400 text-sm">{{ passwordError }}</p>
@@ -122,20 +120,31 @@
                         </div>
                     </div>
 
+                    <!-- Terms and Conditions -->
+                    <div class="flex items-start space-x-3">
+                        <input id="agreeTerms" v-model="agreeTerms" type="checkbox" required
+                            class="mt-1 w-4 h-4 text-blue-600 bg-white/10 border border-white/20 rounded focus:ring-blue-500 focus:ring-2"
+                            :class="{ 'border-red-400 ring-1 ring-red-400': termsError }" />
+                        <label for="agreeTerms" class="text-sm text-gray-300">
+                            I agree to the 
+                            <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors">Terms of Service</a> 
+                            and 
+                            <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <p v-if="termsError" class="text-red-400 text-sm">{{ termsError }}</p>
+
                     <!-- Submit Button -->
                     <button type="submit" :disabled="loading || !isFormValid"
                         class="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent">
                         <span v-if="loading" class="flex items-center justify-center">
-                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                    stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor"
-                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                                </path>
-                            </svg>
+                            <i class="bi bi-arrow-clockwise animate-spin mr-3"></i>
                             Creating Account...
                         </span>
-                        <span v-else>Create Account</span>
+                        <span v-else class="flex items-center justify-center">
+                            <i class="bi bi-person-plus mr-2"></i>
+                            Create Account
+                        </span>
                     </button>
                 </form>
 
@@ -145,16 +154,8 @@
                     'bg-red-500/20 border border-red-400/30 text-red-300': messageType === 'error'
                 }">
                     <div class="flex items-center justify-center space-x-2">
-                        <svg v-if="messageType === 'success'" class="h-5 w-5 text-green-400" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <svg v-else-if="messageType === 'error'" class="h-5 w-5 text-red-400" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <i v-if="messageType === 'success'" class="bi bi-check-circle text-green-400"></i>
+                        <i v-else-if="messageType === 'error'" class="bi bi-exclamation-circle text-red-400"></i>
                         <p class="font-medium">{{ message }}</p>
                     </div>
                 </div>
@@ -163,10 +164,8 @@
                 <div class="text-center">
                     <p class="text-gray-400 text-sm">
                         Already have an account?
-                        <router-link to="/signin">
-                            <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors font-medium">
-                                Sign in
-                            </a>
+                        <router-link to="/signin" class="text-blue-400 hover:text-blue-300 transition-colors font-medium">
+                            Sign in
                         </router-link>
                     </p>
                 </div>
@@ -176,14 +175,16 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { supabase } from '../supabase'
 import { useRouter } from 'vue-router'
 
 // Reactive state
+const category = ref('')
 const username = ref('')
 const email = ref('')
 const password = ref('')
+const agreeTerms = ref(false)
 const message = ref('')
 const messageType = ref('') // 'success' or 'error'
 const loading = ref(false)
@@ -191,9 +192,11 @@ const showPassword = ref(false)
 const router = useRouter()
 
 // Error states
+const categoryError = ref('')
 const usernameError = ref('')
 const emailError = ref('')
 const passwordError = ref('')
+const termsError = ref('')
 
 // Password strength computation
 const passwordStrength = computed(() => {
@@ -222,15 +225,27 @@ const passwordStrengthText = computed(() => {
 
 // Form validation
 const isFormValid = computed(() => {
-    return username.value.length > 0 &&
+    return category.value.length > 0 &&
+        username.value.length > 0 &&
         email.value.length > 0 &&
         password.value.length >= 6 &&
+        agreeTerms.value &&
+        !categoryError.value &&
         !usernameError.value &&
         !emailError.value &&
-        !passwordError.value
+        !passwordError.value &&
+        !termsError.value
 })
 
 // Validation functions
+const validateCategory = () => {
+    if (!category.value) {
+        categoryError.value = 'Please select your category'
+    } else {
+        categoryError.value = ''
+    }
+}
+
 const validateUsername = () => {
     if (username.value.length < 3) {
         usernameError.value = 'Username must be at least 3 characters'
@@ -258,19 +273,29 @@ const validatePassword = () => {
     }
 }
 
-// Watch for input changes to validate in real-time
-import { watch } from 'vue'
+const validateTerms = () => {
+    if (!agreeTerms.value) {
+        termsError.value = 'You must agree to the terms and conditions'
+    } else {
+        termsError.value = ''
+    }
+}
 
+// Watch for input changes to validate in real-time
+watch(category, validateCategory)
 watch(username, validateUsername)
 watch(email, validateEmail)
 watch(password, validatePassword)
+watch(agreeTerms, validateTerms)
 
 // Sign Up function
 const signUp = async () => {
     // Validate all fields first
+    validateCategory()
     validateUsername()
     validateEmail()
     validatePassword()
+    validateTerms()
 
     if (!isFormValid.value) {
         return
@@ -285,7 +310,9 @@ const signUp = async () => {
             password: password.value,
             options: {
                 data: {
-                    username: username.value
+                    username: username.value,
+                    category: category.value,
+                    user_type: category.value // Additional field for easier filtering
                 }
             }
         })
@@ -300,9 +327,11 @@ const signUp = async () => {
             alert('🎉 Make sure to verify the link sent to your email before you signin!!')
 
             // Clear form on success
+            category.value = ''
             username.value = ''
             email.value = ''
             password.value = ''
+            agreeTerms.value = false
 
             // Redirect to signin page after a short delay
             setTimeout(() => {
@@ -317,3 +346,16 @@ const signUp = async () => {
     }
 }
 </script>
+
+<style scoped>
+/* Custom styles for select dropdown */
+select option {
+    background-color: #374151;
+    color: white;
+}
+
+select:focus option:checked {
+    background-color: #3b82f6;
+    color: white;
+}
+</style>
