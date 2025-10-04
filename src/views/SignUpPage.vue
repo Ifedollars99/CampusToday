@@ -1,11 +1,10 @@
 <template>
-    <div
-        class="min-h-screen taichi-background flex items-center justify-center px-4 py-8 relative overflow-hidden">
-        
+    <div class="min-h-screen taichi-background flex items-center justify-center px-4 py-8 relative overflow-hidden">
+
         <!-- Animated Yin Yang symbols - right side only -->
         <div class="absolute top-20 right-4 sm:top-40 sm:right-32 yin-yang-small floating-2"></div>
         <div class="absolute bottom-10 right-4 sm:bottom-20 sm:right-20 yin-yang-small floating-4"></div>
-        
+
 
 
         <!-- Signup Card -->
@@ -38,7 +37,8 @@
                             <select id="category" v-model="category" required
                                 class="w-full pl-10 pr-4 py-3 bg-white/20 border border-gray-400/40 rounded-xl text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent transition-all duration-200 appearance-none"
                                 :class="{ 'border-red-500 ring-1 ring-red-500': categoryError }">
-                                <option value="" disabled class="bg-gray-100 text-gray-700">Select your category</option>
+                                <option value="" disabled class="bg-gray-100 text-gray-700">Select your category
+                                </option>
                                 <option value="student" class="bg-white text-gray-900">Student</option>
                                 <option value="staff" class="bg-white text-gray-900">Staff/Lecturer</option>
                             </select>
@@ -126,10 +126,14 @@
                             class="mt-1 w-4 h-4 text-gray-800 bg-white/30 border border-gray-400 rounded focus:ring-gray-600 focus:ring-2"
                             :class="{ 'border-red-500 ring-1 ring-red-500': termsError }" />
                         <label for="agreeTerms" class="text-sm text-gray-700">
-                            I agree to the 
-                            <a href="#" class="text-gray-900 hover:text-gray-700 transition-colors font-medium underline">Terms of Service</a> 
-                            and 
-                            <a href="#" class="text-gray-900 hover:text-gray-700 transition-colors font-medium underline">Privacy Policy</a>
+                            I agree to the
+                            <a href="#"
+                                class="text-gray-900 hover:text-gray-700 transition-colors font-medium underline">Terms
+                                of Service</a>
+                            and
+                            <a href="#"
+                                class="text-gray-900 hover:text-gray-700 transition-colors font-medium underline">Privacy
+                                Policy</a>
                         </label>
                     </div>
                     <p v-if="termsError" class="text-red-600 text-sm">{{ termsError }}</p>
@@ -164,7 +168,8 @@
                 <div class="text-center">
                     <p class="text-blue-500 text-sm">
                         Already have an account?
-                        <router-link to="/signin" class="text-blue-500 hover:text-gray-700 transition-colors font-medium underline">
+                        <router-link to="/signin"
+                            class="text-blue-500 hover:text-gray-700 transition-colors font-medium underline">
                             Sign in
                         </router-link>
                     </p>
@@ -312,7 +317,8 @@ const signUp = async () => {
                 data: {
                     username: username.value,
                     category: category.value,
-                    user_type: category.value // Additional field for easier filtering
+                    user_type: category.value,
+                    role: category.value // Just add this line
                 }
             }
         })
@@ -350,16 +356,15 @@ const signUp = async () => {
 <style scoped>
 /* Taichi-inspired background */
 .taichi-background {
-    background: linear-gradient(135deg, 
-        #ffffff 0%, 
-        #f8f9fa 25%, 
-        #000000 25%, 
-        #1a1a1a 50%, 
-        #ffffff 50%, 
-        #f8f9fa 75%, 
-        #000000 75%, 
-        #1a1a1a 100%
-    );
+    background: linear-gradient(135deg,
+            #ffffff 0%,
+            #f8f9fa 25%,
+            #000000 25%,
+            #1a1a1a 50%,
+            #ffffff 50%,
+            #f8f9fa 75%,
+            #000000 75%,
+            #1a1a1a 100%);
     background-size: 200px 200px;
     animation: taichi-flow 30s linear infinite;
 }
@@ -372,8 +377,13 @@ const signUp = async () => {
 }
 
 @keyframes taichi-flow {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
 }
 
 /* Yin Yang symbols */
@@ -457,34 +467,78 @@ const signUp = async () => {
 }
 
 @keyframes rotate-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes float-1 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(180deg); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(180deg);
+    }
 }
 
 @keyframes float-2 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(-180deg); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(-180deg);
+    }
 }
 
 @keyframes float-3 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-25px) rotate(180deg); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(180deg);
+    }
 }
 
 @keyframes float-4 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-35px) rotate(-180deg); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-35px) rotate(-180deg);
+    }
 }
 
-.floating-1 { animation: float-1 8s ease-in-out infinite; }
-.floating-2 { animation: float-2 6s ease-in-out infinite; }
-.floating-3 { animation: float-3 10s ease-in-out infinite; }
-.floating-4 { animation: float-4 7s ease-in-out infinite; }
+.floating-1 {
+    animation: float-1 8s ease-in-out infinite;
+}
+
+.floating-2 {
+    animation: float-2 6s ease-in-out infinite;
+}
+
+.floating-3 {
+    animation: float-3 10s ease-in-out infinite;
+}
+
+.floating-4 {
+    animation: float-4 7s ease-in-out infinite;
+}
 
 /* Custom styles for select dropdown */
 select option {

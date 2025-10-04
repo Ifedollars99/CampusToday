@@ -145,16 +145,33 @@
                     <p class="text-base text-gray-800 leading-relaxed">{{ post.content }}</p>
                 </div>
                 
-                <!-- Post Media -->
-                <div v-if="post.mediaType === 'image'" class="mb-4">
+                <!-- Post Media with Download Button -->
+                <div v-if="post.mediaType === 'image'" class="mb-4 relative group">
                     <img :src="post.mediaUrl" 
                         class="w-full max-h-96 object-cover rounded-lg border border-gray-200" 
                         :alt="post.content">
+                    <!-- Download button for images -->
+                    <button 
+                        @click="downloadMedia(post.mediaUrl, `${post.author}-${post.id}.jpg`)"
+                        class="absolute top-3 right-3 bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2.5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 flex items-center space-x-2"
+                        title="Download image">
+                        <i class="bi bi-download text-lg"></i>
+                        <span class="text-sm font-medium">Download</span>
+                    </button>
                 </div>
-                <div v-else-if="post.mediaType === 'video'" class="mb-4">
+                
+                <div v-else-if="post.mediaType === 'video'" class="mb-4 relative group">
                     <video :src="post.mediaUrl" 
                         class="w-full max-h-96 rounded-lg border border-gray-200" 
                         controls></video>
+                    <!-- Download button for videos -->
+                    <button 
+                        @click="downloadMedia(post.mediaUrl, `${post.author}-${post.id}.mp4`)"
+                        class="absolute top-3 right-3 bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2.5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 flex items-center space-x-2"
+                        title="Download video">
+                        <i class="bi bi-download text-lg"></i>
+                        <span class="text-sm font-medium">Download</span>
+                    </button>
                 </div>
                 
                 <!-- Post Actions -->
@@ -215,7 +232,7 @@ defineProps({
 })
 
 // Define emits for communicating with parent
-const emit = defineEmits(['create-post', 'like-post', 'upload-file', 'delete-post'])
+const emit = defineEmits(['create-post', 'like-post', 'upload-file', 'delete-post', 'download-media'])
 
 const pendingAssignments = ref(4)
 const showCreatePost = ref(false)
@@ -273,6 +290,10 @@ const deletePost = (postId) => {
     emit('delete-post', postId)
 }
 
+const downloadMedia = (mediaUrl, fileName) => {
+    emit('download-media', mediaUrl, fileName)
+}
+
 const formatTimeAgo = (timestamp) => {
     const now = new Date()
     const diff = now - timestamp
@@ -287,5 +308,5 @@ const formatTimeAgo = (timestamp) => {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 </style>

@@ -12,19 +12,12 @@
                         <div>
                             <h1 class="text-2xl font-bold text-gray-900">Campus Today</h1>
                             <p class="text-sm text-gray-500">
-                                {{ userRole === 'student' ? 'Student Portal' : 'Lecturer Portal' }}
+                                {{ userRole === 'student' ? 'You signed up as a Student ' : 'You signed up as a  Lecturer' }}
                             </p>
                         </div>
                     </div>
 
                     <div class="flex items-center space-x-6">
-                        <!-- Role Toggle -->
-                        <select v-model="userRole"
-                            class="text-base border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="student">Student</option>
-                            <option value="lecturer">Lecturer</option>
-                        </select>
-
                         <!-- Notifications -->
                         <div class="relative">
                             <button class="p-2 text-gray-600 hover:text-gray-900 relative">
@@ -103,7 +96,7 @@
                         <DashPage :courses="courses" :messages="messages" :uploads="uploads" :posts="posts"
                             :username="username" :notifications="notifications" @create-post="handleCreatePost"
                             @like-post="handleLikePost" @upload-file="handleFileUpload"
-                            @delete-post="handleDeletePost" />
+                            @delete-post="handleDeletePost" @download-media="handleDownloadMedia" />
                     </div>
 
                     <!-- Courses -->
@@ -276,6 +269,31 @@
                 </main>
             </div>
         </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div v-if="showDeleteModal" 
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+            <div class="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="bi bi-exclamation-triangle text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Delete Post?</h3>
+                    <p class="text-gray-600 mb-6">Are you sure you want to delete this post? This action cannot be undone.</p>
+                    
+                    <div class="flex space-x-3">
+                        <button @click="cancelDelete"
+                            class="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                            No, Cancel
+                        </button>
+                        <button @click="confirmDelete"
+                            class="flex-1 px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                            Yes, Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -289,6 +307,8 @@ const userRole = ref('student')
 const notifications = ref(3)
 const currentUser = ref(null)
 const username = ref('Student')
+const showDeleteModal = ref(false)
+const postToDelete = ref(null)
 
 const messages = ref([
     {
@@ -417,9 +437,6 @@ const assignments = ref([
     }
 ])
 
-// Add this to your existing script setup section:
-
-// Add posts data
 const posts = ref([
     {
         id: 1,
@@ -439,7 +456,7 @@ const posts = ref([
         authorRole: 'lecturer',
         content: 'Understanding data structures is crucial for programming. Here\'s a comprehensive video on arrays and linked lists.',
         mediaType: 'video',
-        mediaUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+        mediaUrl: '/videos/program.mp4',
         subject: 'Computer Science',
         timestamp: new Date('2024-09-28T09:15:00'),
         likes: 8,
@@ -490,7 +507,51 @@ const handleFileUpload = (file) => {
 }
 
 const handleDeletePost = (postId) => {
-    posts.value = posts.value.filter(post => post.id !== postId)
+    postToDelete.value = postId
+    showDeleteModal.value = true
+}
+
+const confirmDelete = () => {
+    posts.value = posts.value.filter(post => post.id !== postToDelete.value)
+    showDeleteModal.value = false
+    postToDelete.value = null
+}
+
+const cancelDelete = () => {
+    showDeleteModal.value = false
+    postToDelete.value = null
+}
+
+// Improved Download media handler
+const handleDownloadMedia = async (mediaUrl, fileName) => {
+    try {
+        // For external URLs (images, PDFs from external sources)
+        if (mediaUrl.startsWith('http')) {
+            // Create a temporary anchor and trigger download
+            const link = document.createElement('a')
+            link.href = mediaUrl
+            link.download = fileName || 'download'
+            link.target = '_blank'
+            link.rel = 'noopener noreferrer'
+            
+            document.body.appendChild(link)
+            link.click()
+            document.body.removeChild(link)
+            
+        } else {
+            // For local files (videos from /public folder)
+            const link = document.createElement('a')
+            link.href = mediaUrl
+            link.download = fileName || 'download'
+            document.body.appendChild(link)
+            link.click()
+            document.body.removeChild(link)
+        }
+    } catch (error) {
+        console.error('Download failed:', error)
+        // Fallback: Open in new tab
+        window.open(mediaUrl, '_blank')
+    }
 }
 
 const unreadMessages = computed(() => {
@@ -505,6 +566,8 @@ onMounted(async () => {
             currentUser.value = user
             // Get username from user metadata
             username.value = user.user_metadata?.username || user.email?.split('@')[0] || 'Student'
+            // Get user role from signup category
+            userRole.value = user.user_metadata?.role || user.user_metadata?.category || 'student'
         }
     } catch (error) {
         console.error('Error getting user:', error)
