@@ -18,9 +18,10 @@
                     </div>
 
                     <div class="flex items-center space-x-6">
-                        <!-- Notifications -->
+                          <!-- Notifications -->
                         <div class="relative">
-                            <button class="p-2 text-gray-600 hover:text-gray-900 relative">
+                            <button @click="activeTab = 'messages'" 
+                                class="p-2 text-gray-600 hover:text-gray-900 relative transition-colors">
                                 <i class="bi bi-bell text-xl"></i>
                                 <span v-if="notifications > 0"
                                     class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center">
@@ -299,7 +300,7 @@
 
 <script setup>
 import DashPage from '@/components/DashPage.vue'
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { supabase } from '../supabase'
 
 const activeTab = ref('dashboard')
@@ -348,7 +349,7 @@ const courses = ref([
     },
     {
         id: 2,
-        title: 'Physics Laboratory',
+        title: 'Physics Science',
         lecturer: 'Prof. Michael Chen',
         students: 38,
         lastUpdate: '1 day ago',
@@ -556,6 +557,14 @@ const handleDownloadMedia = async (mediaUrl, fileName) => {
 
 const unreadMessages = computed(() => {
     return messages.value.filter(message => message.unread).length
+})
+
+// Watch for tab changes to update notifications
+watch(activeTab, (newTab) => {
+    if (newTab === 'messages' && notifications.value > 0) {
+        // Reduce notifications count when viewing messages
+        notifications.value = Math.max(0, notifications.value - unreadMessages.value)
+    }
 })
 
 // Get current user and username

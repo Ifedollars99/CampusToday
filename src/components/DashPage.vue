@@ -24,9 +24,9 @@
                 class="w-full p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                 rows="3"></textarea>
             
-            <div class="flex items-center space-x-4">
+             <div class="flex flex-col md:flex-row gap-3 md:items-center">
                 <select v-model="newPost.subject" 
-                    class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full md:w-auto px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select Subject</option>
                     <option v-for="course in courses" :key="course.id" :value="course.title">
                         {{ course.title }}
@@ -36,7 +36,7 @@
                 <input type="file" @change="handleFileUpload" accept="image/*,video/*" 
                     class="hidden" ref="fileInput" id="fileUpload">
                 <label for="fileUpload" 
-                    class="px-4 py-2 bg-blue-100 text-blue-600 rounded-lg cursor-pointer hover:bg-blue-200 transition-colors flex items-center space-x-2">
+                    class="w-full md:w-auto px-4 py-2 bg-blue-100 text-blue-600 rounded-lg cursor-pointer hover:bg-blue-200 transition-colors flex items-center justify-center space-x-2">
                     <i class="bi bi-camera"></i>
                     <span>Add Media</span>
                 </label>
