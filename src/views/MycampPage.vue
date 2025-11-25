@@ -101,40 +101,8 @@
                     </div>
 
                     <!-- Courses -->
-                    <div v-if="activeTab === 'courses'" class="space-y-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <h2 class="text-3xl font-bold">My Courses</h2>
-                            <button v-if="userRole === 'lecturer'"
-                                class="bg-blue-600 text-white px-5 py-2.5 rounded-lg flex items-center space-x-2 hover:bg-blue-700 transition-colors">
-                                <i class="bi bi-plus-circle text-lg"></i>
-                                <span class="text-base">Add Course</span>
-                            </button>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                            <div v-for="course in courses" :key="course.id"
-                                class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
-                                <div :class="['h-40 relative', course.color]">
-                                    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-                                    <div class="absolute bottom-4 left-4 text-white">
-                                        <h3 class="font-bold text-xl">{{ course.title }}</h3>
-                                    </div>
-                                </div>
-                                <div class="p-5">
-                                    <p class="text-gray-600 text-base mb-3">
-                                        <i class="bi bi-person mr-2"></i>
-                                        {{ course.lecturer }}
-                                    </p>
-                                    <div class="flex justify-between items-center text-sm text-gray-500">
-                                        <span class="flex items-center">
-                                            <i class="bi bi-people mr-2"></i>
-                                            {{ course.students }} students
-                                        </span>
-                                        <span>Updated {{ course.lastUpdate }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div v-if="activeTab === 'courses'">
+                        <MyCoursesPage :courses="courses" :userRole="userRole" @course-added="handleCourseAdded" />
                     </div>
 
                     <!-- Messages -->
@@ -300,6 +268,7 @@
 
 <script setup>
 import DashPage from '@/components/DashPage.vue'
+import MyCoursesPage from '@/components/MycoursesPage.vue'
 import { ref, computed, onMounted, watch } from 'vue'
 import { supabase } from '../supabase'
 
@@ -521,6 +490,11 @@ const confirmDelete = () => {
 const cancelDelete = () => {
     showDeleteModal.value = false
     postToDelete.value = null
+}
+
+// Course added handler
+const handleCourseAdded = (newCourse) => {
+    courses.value.unshift(newCourse)
 }
 
 // Improved Download media handler
